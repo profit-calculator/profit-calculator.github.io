@@ -71,22 +71,37 @@
 		});
 
 		$("#countSlider").on('slide', function(slideEvt) {
+
 			var count = slideEvt.value
+
+			$("#totalCount").text(count);
+
+			var nextProfit
+
 			if (count >= 0 & count < 20) {
+
+				nextProfit = 400
 				$("#role").text("会员");
 				$("#rebate").text("12%");
 				$("#bonus").text("6.9%");
+
 			}else if (count < 63) {
+
+				nextProfit = 600
 				$("#role").text("经理");
 				$("#rebate").text("18%");
 				$("#bonus").text("6.9% + 2.9%");
+				
 			}else {
+
+				nextProfit = 800
 				$("#role").text("总监");
 				$("#rebate").text("24%");
 				$("#bonus").text("6.9% + 2.9% + 2.9%");
 			}
-			$("#totalCount").text(count);
-			$("#nextProfit").text(count * 400);
+
+			$("#nextProfit").text(nextProfit);
+
 		});
 	</script>
 	<!-- Placed at the end of the document so the pages load faster -->
