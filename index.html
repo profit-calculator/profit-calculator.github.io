@@ -84,6 +84,7 @@
 				$("#role").text("会员");
 				$("#rebate").text("12%");
 				$("#bonus").text("6.9%");
+				$("#totalProfit").text(nextProfit * count);
 
 			}else if (count < 63) {
 
@@ -91,13 +92,16 @@
 				$("#role").text("经理");
 				$("#rebate").text("18%");
 				$("#bonus").text("6.9% + 2.9%");
-				
+				$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
+
 			}else {
 
 				nextProfit = 800
 				$("#role").text("总监");
 				$("#rebate").text("24%");
 				$("#bonus").text("6.9% + 2.9% + 2.9%");
+				$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
+
 			}
 
 			$("#nextProfit").text(nextProfit);
