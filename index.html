@@ -69,8 +69,16 @@
 		});
 
 		$("#countSlider").on('slide', function(slideEvt) {
-			$("#totalCount").text(slideEvt.value);
-			$("#nextProfit").text(slideEvt.value);
+			var count = slideEvt.value
+			if (count > 0 & count < 20) {
+				$("#role").text("会员");
+			}else if (count < 63) {
+				$("#role").text("经理");
+			}else {
+				$("#role").text("总监");
+			}
+			$("#totalCount").text(count);
+			$("#nextProfit").text(count * 400);
 		});
 	</script>
 	<!-- Placed at the end of the document so the pages load faster -->
