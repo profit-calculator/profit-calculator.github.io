@@ -38,40 +38,23 @@
 	<script type='text/javascript' src="js/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 	
-	<script type="text/javascript">
-		let scrollEle = document.body;
-		scrollEle.addEventListener('touchstart', (evt) => {
-    // 修复微信的黑色弹性滚动与ios冲突问题
-    let scrollTop = scrollEle.scrollTop;
-    let scrollHeight = scrollEle.scrollHeight;
-    let height = scrollEle.offsetHeight;
-    let scrollTopTo;
-
-    // 顶部
-    scrollTopTo = Math.max(scrollTop, 1);
-
-    // 底部
-    if(scrollTopTo === scrollHeight - height) {
-    	scrollTopTo--;
-    }
-
-    if(scrollTop != scrollTopTo) {
-    	scrollEle.scrollTop = scrollTopTo;
-    }
-});
-</script>
-
-<script type='text/javascript'>
-	$(document).ready(function() {
-		$("#ex11").slider({
-			tooltip : 'always',
-			step: 1,
-			min: 0,
-			max: 100,
-			orientation: 'vertical'
+	<script type='text/javascript'>
+		document.querySelector('body').addEventListener('touchstart', function (ev) {
+			event.preventDefault();
 		});
-	});
-</script>
-<!-- Placed at the end of the document so the pages load faster -->
+	</script>
+
+	<script type='text/javascript'>
+		$(document).ready(function() {
+			$("#ex11").slider({
+				tooltip : 'always',
+				step: 1,
+				min: 0,
+				max: 100,
+				orientation: 'vertical'
+			});
+		});
+	</script>
+	<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>
