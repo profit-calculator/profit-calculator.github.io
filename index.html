@@ -21,7 +21,7 @@
 	}
 
 
-	#nextProfit,#totalProfit,#role,#totalCount {
+	#nextProfit,#totalProfit,#role,#totalCount,#rebate,#bonus {
 		color: green;
 	}
 
@@ -36,8 +36,10 @@
 <body>
 	<h1>您当前是<span id="role">会员</span></h1>
 	<h2>您的直推总数已达到<span id="totalCount">0</span>人</h2>
-	<h2>您的总利润为<span id="totalProfit">0</span>元</h2>
-	<h2>下次直推可分润<span id="nextProfit">400</span>元</h2>
+	<h2>您已赚走纯利润<span id="totalProfit">0</span>元</h2>
+	<h2>您的下次直推可分润<span id="nextProfit">400</span>元</h2>
+	<h2>您的下级复购时您可获得佣金<span id="rebate">12%</span></h2>
+	<h2>您的分红百分比为<span id="bonus">6.9%</span></h2>
 	<br>
 	<div>
 		<input id="countSlider" type="text" data-slider-handle="custom"/>
@@ -72,10 +74,16 @@
 			var count = slideEvt.value
 			if (count >= 0 & count < 20) {
 				$("#role").text("会员");
+				$("#rebate").text("12%");
+				$("#bonus").text("6.9%");
 			}else if (count < 63) {
 				$("#role").text("经理");
+				$("#rebate").text("18%");
+				$("#bonus").text("6.9% + 2.9%");
 			}else {
 				$("#role").text("总监");
+				$("#rebate").text("24%");
+				$("#bonus").text("6.9% + 2.9% + 2.9%");
 			}
 			$("#totalCount").text(count);
 			$("#nextProfit").text(count * 400);
