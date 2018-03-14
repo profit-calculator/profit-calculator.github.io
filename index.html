@@ -70,7 +70,7 @@
 
 		$("#countSlider").on('slide', function(slideEvt) {
 			var count = slideEvt.value
-			if (count > 0 & count < 20) {
+			if (count >= 0 & count < 20) {
 				$("#role").text("会员");
 			}else if (count < 63) {
 				$("#role").text("经理");
