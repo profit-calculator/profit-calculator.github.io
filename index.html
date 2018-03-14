@@ -16,6 +16,15 @@
 		padding-bottom: 20px;
 	}
 
+	#nextProfitTitleLabel {
+		margin-left: 142px;
+	}
+
+	#nextProfitLabel {
+		color: green;
+	}
+
+
 	.well {
 		background-color: #E0E0E0;
 	}
@@ -31,6 +40,7 @@
 
 	<div class="well">
 		<input id="memberCountSlider" type="text" data-slider-handle="custom"/>
+		<span id="nextProfitTitleLabel">再直推一个会员可分润<span id="nextProfitLabel">0</span>元</span>
 	</div>
 
 	<script type='text/javascript' src="js/jquery.min.js"></script>
@@ -55,6 +65,10 @@
 				orientation: 'vertical',
 				reversed : true
 			});
+		});
+
+		$("#memberCountSlider").on('slide', function(slideEvt) {
+			$("#nextProfitLabel").text(slideEvt.value);
 		});
 	</script>
 	<!-- Placed at the end of the document so the pages load faster -->
