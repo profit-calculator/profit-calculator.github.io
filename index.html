@@ -4,10 +4,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>分润计算器</title>
+	<title>鼎耀分润计算器</title>
 	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link href="//cdn.bootcss.com/bootstrap-slider/9.4.1/css/bootstrap-slider.css" rel="stylesheet">  
-	
+
 	<script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>   
 	<script src="js/bootstrap.min.js"></script>    
 	<script src="//cdn.bootcss.com/bootstrap-slider/9.4.1/bootstrap-slider.min.js"></script>  
@@ -25,28 +25,19 @@
 <body>
 	<h1 th:text="'Hello, ' + ${name} + '!'"></h1>
 
-	<p>
-		<button type="button" class="btn btn-lg btn-default">Default</button>
-		<button type="button" class="btn btn-lg btn-primary">Primary</button>
-		<button type="button" class="btn btn-lg btn-success">Success</button>
-		<button type="button" class="btn btn-lg btn-info">Info</button>
-		<button type="button" class="btn btn-lg btn-warning">Warning</button>
-		<button type="button" class="btn btn-lg btn-danger">Danger</button>
-		<button type="button" class="btn btn-lg btn-link">Link</button>
-	</p>
+	<div id="example-8" class='slider-example'>
+		<h3>Example 8:</h3>
+		<p>Tooltip can always be displayed.</p>
+		<div class="well">
+			<input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+		</div>
 
-	<div class="well">
-		<input id="ex8" data-slider-id='ex1Slider' type="text"
-		data-slider-min="0" data-slider-max="20" data-slider-step="1"
-		data-slider-value="14" />
-	</div>
-
-	<script type='text/javascript'>
-		$(document).ready(function() {
-			$("#ex8").slider({
-				tooltip : 'always'
+		<script type='text/javascript'>
+			$(document).ready(function() {
+				$("#ex8").slider({
+					tooltip : 'always'
+				});
 			});
-		});
-	</script>
-</body>
-</html>
+		</script>
+	</body>
+	</html>
