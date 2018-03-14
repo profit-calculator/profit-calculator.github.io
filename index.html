@@ -20,11 +20,8 @@
 		margin-left: 42px;
 	}
 
-	#roleLabel {
-		color: green;
-	}
 
-	#nextProfitLabel {
+	#nextProfitLabel,#totalProfit,#roleLabel {
 		color: green;
 	}
 
@@ -37,12 +34,13 @@
 
 
 <body>
-	<h1>您现在是<span id="roleLabel">会员</span></h1>
-	<h2>再直推1个可分润<span id="nextProfitLabel">0</span>元</h2>
+	<h1>您当前是<span id="roleLabel">会员</span></h1>
+	<h2>您的总利润为<span id="totalProfit">400</span>元</h2>
+	<h2>下次直推可分润<span id="nextProfitLabel">400</span>元</h2>
 	<br>
 	<div>
 		<input id="memberCountSlider" type="text" data-slider-handle="custom"/>
-		<span id="sliderInstruction"><—滑动五角星来增减您的会员数量</span>
+		<span id="sliderInstruction"><—请滑动五角星</span>
 	</div>
 
 	<script type='text/javascript' src="js/jquery.min.js"></script>
@@ -69,7 +67,7 @@
 			});
 		});
 
-		$("#memberCountSlider").on('slide', function(slideEvt) {
+		$("#roleSlider").on('slide', function(slideEvt) {
 			$("#nextProfitLabel").text(slideEvt.value);
 		});
 	</script>
