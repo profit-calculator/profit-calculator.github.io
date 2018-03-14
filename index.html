@@ -12,22 +12,18 @@
 	<style type='text/css'>
 	/* Space out content a bit */
 	body {
-		padding-top: 20px;
-		padding-bottom: 20px;
+		padding-top: 5px;
+		padding-bottom: 0px;
 	}
 
-	#nextProfitTitleLabel {
-		margin-left: 142px;
+	#roleLabel {
+		color: green;
 	}
 
 	#nextProfitLabel {
 		color: green;
 	}
 
-
-	.well {
-		background-color: #E0E0E0;
-	}
 
 }
 </style>
@@ -37,10 +33,11 @@
 
 
 <body>
-
-	<div class="well">
+	<h1>您现在是<span id="roleLabel">会员</span></h1>
+	<h2>再直推1个可分润<span id="nextProfitLabel">0</span>元</h2>
+	<br>
+	<div>
 		<input id="memberCountSlider" type="text" data-slider-handle="custom"/>
-		<span id="nextProfitTitleLabel">再直推一个会员可分润<span id="nextProfitLabel">0</span>元</span>
 	</div>
 
 	<script type='text/javascript' src="js/jquery.min.js"></script>
