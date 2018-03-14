@@ -30,7 +30,7 @@
 <body>
 
 	<div class="well">
-		<input id="ex11" type="text" data-slider-handle="custom"/>
+		<input id="memberCountSlider" type="text" data-slider-handle="custom"/>
 	</div>
 
 	<script type='text/javascript' src="js/jquery.min.js"></script>
@@ -46,11 +46,12 @@
 
 	<script type='text/javascript'>
 		$(document).ready(function() {
-			$("#ex11").slider({
+			$("#memberCountSlider").slider({
 				tooltip : 'always',
 				step: 1,
 				min: 0,
 				max: 100,
+				value: 0,
 				orientation: 'vertical',
 				reversed : true
 			});
