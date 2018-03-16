@@ -23,7 +23,7 @@
 	}
 
 
-	#nextProfit,#totalProfit,#level,#totalCount,#rebate,#bonus {
+	#nextProfit,#totalProfit,#level,#totalCount{
 		color: green;
 	}
 
@@ -41,9 +41,6 @@
 
 
 <body>
-	<h3>您的下级复购时您可获得佣金<span id="rebate">12%</span></h3>
-	<h3>您的分红百分比为<span id="bonus">6.9%</span></h3>
-	<br>
 
 	<div id="slidersDiv">
 		<h3 class="note">您的直推总数已达到<span id="totalCount">0</span>人</h3>
@@ -89,8 +86,6 @@
 					from: 0
 				});
 
-				$("#rebate").text("12%");
-				$("#bonus").text("6.9%");
 				$("#totalProfit").text(nextProfit * count);
 
 				totalProfitSlider.update({
@@ -106,8 +101,6 @@
 					from: 1
 				});
 
-				$("#rebate").text("18%");
-				$("#bonus").text("9.8%");
 				$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
 
 				totalProfitSlider.update({
@@ -123,8 +116,6 @@
 					from: 2
 				});
 
-				$("#rebate").text("24%");
-				$("#bonus").text("12.7%");
 				$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
 
 				totalProfitSlider.update({
