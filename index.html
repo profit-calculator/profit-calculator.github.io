@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>鼎耀集团·分润计算器</title>
+	<title>鼎耀分润计算器</title>
 	<link rel="stylesheet" href="css/normalize.css" />
 	<link rel="stylesheet" href="css/ion.rangeSlider.css" />
 	<link rel="stylesheet" href="css/ion.rangeSlider.skinHTML5.css" />
@@ -17,14 +17,19 @@
 		padding-bottom: 0px;
 	}
 
-	#rangeDiv {
+	#slidersDiv {
 		margin-left: 42px;
 		margin-right: 42px;
 	}
 
 
-	#nextProfit,#totalProfit,#role,#totalCount,#rebate,#bonus {
+	#nextProfit,#totalProfit,#level,#totalCount,#rebate,#bonus {
 		color: green;
+	}
+
+	.note{
+		position:relative;
+		padding-bottom: 0px;
 	}
 
 
@@ -36,16 +41,19 @@
 
 
 <body>
-	<h1>您当前是<span id="role">会员</span></h1>
-	<h2>您的直推总数已达到<span id="totalCount">0</span>人</h2>
 	<h2>您已赚走纯利润<span id="totalProfit">0</span>元</h2>
 	<h2>您的下次直推可分润<span id="nextProfit">400</span>元</h2>
 	<h3>您的下级复购时您可获得佣金<span id="rebate">12%</span></h3>
 	<h3>您的分红百分比为<span id="bonus">6.9%</span></h3>
 	<br>
 
-	<div id="rangeDiv">
-		<input type="text" id="range" value=""/>
+	<div id="slidersDiv">
+		<h3 class="note">您的直推总数已达到<span id="totalCount">0</span>人</h3>
+		<input type="text" id="totalCountSlider" value=""/>
+
+		<h3 class="note">您当前是<span id="level">会员</span></h3>
+		<input type="text" id="levelSlider" value=""/>
+
 	</div>
 
 	<script src="js/jquery-1.12.3.min.js"></script>
@@ -53,15 +61,16 @@
 	<script>
 
 
-		$("#range").ionRangeSlider({
+		$("#totalCountSlider").ionRangeSlider({
 			hide_min_max: true,
 			keyboard: true,
 			min: 0,
 			max: 100,
-			from: 0
+			from: 0,
+			grid: true
 		});
 
-		$("#range").on("change", function () {
+		$("#totalCountSlider").on("change", function () {
 			var $this = $(this),
 			count = $this.prop("value");
 
@@ -70,10 +79,17 @@
 
 			var nextProfit;
 
+			var levelSlider = $("#levelSlider").data("ionRangeSlider");
+
 			if (count >= 0 & count < 20) {
 
 				nextProfit = 400
-				$("#role").text("会员");
+				$("#level").text("会员");
+
+				levelSlider.update({
+					from: 0
+				});
+
 				$("#rebate").text("12%");
 				$("#bonus").text("6.9%");
 				$("#totalProfit").text(nextProfit * count);
@@ -81,7 +97,12 @@
 			}else if (count < 63) {
 
 				nextProfit = 600
-				$("#role").text("经理");
+				$("#level").text("经理");
+
+				levelSlider.update({
+					from: 1
+				});
+
 				$("#rebate").text("18%");
 				$("#bonus").text("9.8%");
 				$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
@@ -89,7 +110,12 @@
 			}else {
 
 				nextProfit = 800
-				$("#role").text("总监");
+				$("#level").text("总监");
+
+				levelSlider.update({
+					from: 2
+				});
+
 				$("#rebate").text("24%");
 				$("#bonus").text("12.7%");
 				$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
@@ -97,6 +123,14 @@
 
 			$("#nextProfit").text(nextProfit);
 		});
+
+
+		$("#levelSlider").ionRangeSlider({
+			hide_min_max: true,
+			values: ["会员", "经理", "总监"],
+			grid: true
+		});
+
 
 	</script>
 
