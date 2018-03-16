@@ -41,7 +41,6 @@
 
 
 <body>
-	<h2>您已赚走纯利润<span id="totalProfit">0</span>元</h2>
 	<h2>您的下次直推可分润<span id="nextProfit">400</span>元</h2>
 	<h3>您的下级复购时您可获得佣金<span id="rebate">12%</span></h3>
 	<h3>您的分红百分比为<span id="bonus">6.9%</span></h3>
@@ -54,21 +53,15 @@
 		<h3 class="note">您当前是<span id="level">会员</span></h3>
 		<input type="text" id="levelSlider" value=""/>
 
+		<h3 class="note">您已赚走纯利润<span id="totalProfit">0</span>元</h3>
+		<input type="text" id="totalProfitSlider" value=""/>
+
 	</div>
 
 	<script src="js/jquery-1.12.3.min.js"></script>
 	<script src="js/ion.rangeSlider.js"></script>
 	<script>
 
-
-		$("#totalCountSlider").ionRangeSlider({
-			hide_min_max: true,
-			keyboard: true,
-			min: 0,
-			max: 100,
-			from: 0,
-			grid: true
-		});
 
 		$("#totalCountSlider").on("change", function () {
 			var $this = $(this),
@@ -80,6 +73,8 @@
 			var nextProfit;
 
 			var levelSlider = $("#levelSlider").data("ionRangeSlider");
+			var totalProfitSlider = $("#totalProfitSlider").data("ionRangeSlider");
+
 
 			if (count >= 0 & count < 20) {
 
@@ -94,6 +89,10 @@
 				$("#bonus").text("6.9%");
 				$("#totalProfit").text(nextProfit * count);
 
+				totalProfitSlider.update({
+					from: nextProfit * count
+				});
+
 			}else if (count < 63) {
 
 				nextProfit = 600
@@ -107,6 +106,10 @@
 				$("#bonus").text("9.8%");
 				$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
 
+				totalProfitSlider.update({
+					from: 400 * 19 + nextProfit * (count-19)
+				});
+
 			}else {
 
 				nextProfit = 800
@@ -119,16 +122,37 @@
 				$("#rebate").text("24%");
 				$("#bonus").text("12.7%");
 				$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
+
+				totalProfitSlider.update({
+					from: 400 * 19 + 600 * (62-19) + nextProfit * (count-62)
+				});
 			}
 
 			$("#nextProfit").text(nextProfit);
 		});
 
+		$("#totalCountSlider").ionRangeSlider({
+			hide_min_max: true,
+			keyboard: true,
+			min: 0,
+			max: 100,
+			from: 0,
+			grid: true
+		});
 
 		$("#levelSlider").ionRangeSlider({
 			hide_min_max: true,
 			values: ["会员", "经理", "总监"],
 			grid: true
+		});
+
+		$("#totalProfitSlider").ionRangeSlider({
+			hide_min_max: true,
+			grid: true,
+			min: 0,
+			max: 100000,
+			from: 0,
+			prefix: "$"
 		});
 
 
