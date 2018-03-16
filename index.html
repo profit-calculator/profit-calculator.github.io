@@ -5,8 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>鼎耀集团·分润计算器</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/ion.rangeSlider.css" />
+	<link rel="stylesheet" href="css/ion.rangeSlider.skinHTML5.css" />
 
 
 	<style type='text/css'>
@@ -26,14 +27,6 @@
 		color: green;
 	}
 
-	#custom-handle {
-		width: 3em;
-		height: 1.6em;
-		top: 50%;
-		margin-top: -.8em;
-		text-align: center;
-		line-height: 1.6em;
-	}
 
 
 }
@@ -47,70 +40,70 @@
 	<h2>您的直推总数已达到<span id="totalCount">0</span>人</h2>
 	<h2>您已赚走纯利润<span id="totalProfit">0</span>元</h2>
 	<h2>您的下次直推可分润<span id="nextProfit">400</span>元</h2>
-	<h3>您的下级复购时您可获得佣金<span id="rebate">12%</span></h2>
-		<h3>您的分红百分比为<span id="bonus">6.9%</span></h2>
-			<br>
+	<h3>您的下级复购时您可获得佣金<span id="rebate">12%</span></h3>
+	<h3>您的分红百分比为<span id="bonus">6.9%</span></h3>
+	<br>
 
-			<div id="slider">
-				<div id="custom-handle" class="ui-slider-handle"></div>
-			</div>
+	<div style="position: relative; padding: 200px;">
 
-			<script src="js/jquery-1.12.4.js"></script>
-			<script src="js/jquery-ui.js"></script>
-			<script type='text/javascript'>
+		<div>
+			<input type="text" id="range" value="" name="range" />
+		</div>
 
-				$( function() {
-					var handle = $( "#custom-handle" );
-					$( "#slider" ).slider({
-						range: "max",
-						min: 0,
-						max: 100,
-						value: 0,
-						create: function() {
-							handle.text( $( this ).slider( "value" ) );
-						},
-						slide: function( event, ui ) {
+	</div>
 
-							var count = ui.value
-							handle.text( count );
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script src="js/ion.rangeSlider.js"></script>
+	<script>
 
 
-							$("#totalCount").text(count);
+		$("#range").ionRangeSlider({
+			hide_min_max: true,
+			keyboard: true,
+			min: 0,
+			max: 100,
+			from: 0
+		});
 
-							var nextProfit;
+		$("#range").on("change", function () {
+			var $this = $(this),
+			count = $this.prop("value");
 
-							if (count >= 0 & count < 20) {
 
-								nextProfit = 400
-								$("#role").text("会员");
-								$("#rebate").text("12%");
-								$("#bonus").text("6.9%");
-								$("#totalProfit").text(nextProfit * count);
+			$("#totalCount").text(count);
 
-							}else if (count < 63) {
+			var nextProfit;
 
-								nextProfit = 600
-								$("#role").text("经理");
-								$("#rebate").text("18%");
-								$("#bonus").text("9.8%");
-								$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
+			if (count >= 0 & count < 20) {
 
-							}else {
+				nextProfit = 400
+				$("#role").text("会员");
+				$("#rebate").text("12%");
+				$("#bonus").text("6.9%");
+				$("#totalProfit").text(nextProfit * count);
 
-								nextProfit = 800
-								$("#role").text("总监");
-								$("#rebate").text("24%");
-								$("#bonus").text("12.7%");
-								$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
-							}
+			}else if (count < 63) {
 
-							$("#nextProfit").text(nextProfit);
+				nextProfit = 600
+				$("#role").text("经理");
+				$("#rebate").text("18%");
+				$("#bonus").text("9.8%");
+				$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
 
-						}
-					});
-				} );
-			</script>
+			}else {
 
-			<!-- Placed at the end of the document so the pages load faster -->
-		</body>
-		</html>
+				nextProfit = 800
+				$("#role").text("总监");
+				$("#rebate").text("24%");
+				$("#bonus").text("12.7%");
+				$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
+			}
+
+			$("#nextProfit").text(nextProfit);
+		});
+
+	</script>
+
+	<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
