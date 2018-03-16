@@ -51,7 +51,6 @@
 			<br>
 
 			<div id="slider">
-				<div id="custom-handle" class="ui-slider-handle"></div>
 			</div>
 
 			<script src="js/jquery-1.12.4.js"></script>
@@ -61,25 +60,17 @@
 					event.preventDefault();
 				});
 
-				var jinzhi=0;
-				document.querySelector('body').addEventListener("touchmove",function(e){
-					if(jinzhi==0){
-						e.preventDefault();
-						e.stopPropagation();
-					}
-				});
 
 				$( function() {
-					var handle = $( "#custom-handle" );
 					$( "#slider" ).slider({
-						create: function() {
-							handle.text( $( this ).slider( "value" ) );
-						},
+						orientation: "vertical",
+						range: "max",
+						min: 0,
+						max: 100,
+						value: 0,
 						slide: function( event, ui ) {
 
 							var count = ui.value
-							handle.text( count );
-
 
 							$("#totalCount").text(count);
 
