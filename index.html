@@ -16,8 +16,9 @@
 		padding-bottom: 0px;
 	}
 
-	#sliderInstruction {
+	#slider {
 		margin-left: 42px;
+		margin-right: 42px;
 	}
 
 
@@ -51,26 +52,28 @@
 			<br>
 
 			<div id="slider">
+				<div id="custom-handle" class="ui-slider-handle"></div>
 			</div>
 
 			<script src="js/jquery-1.12.4.js"></script>
 			<script src="js/jquery-ui.js"></script>
 			<script type='text/javascript'>
-				document.querySelector('body').addEventListener('touchstart', function (ev) {
-					event.preventDefault();
-				});
-
 
 				$( function() {
+					var handle = $( "#custom-handle" );
 					$( "#slider" ).slider({
-						orientation: "vertical",
 						range: "max",
 						min: 0,
 						max: 100,
 						value: 0,
+						create: function() {
+							handle.text( $( this ).slider( "value" ) );
+						},
 						slide: function( event, ui ) {
 
 							var count = ui.value
+							handle.text( count );
+
 
 							$("#totalCount").text(count);
 
