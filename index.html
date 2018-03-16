@@ -54,64 +54,68 @@
 				<div id="custom-handle" class="ui-slider-handle"></div>
 			</div>
 
+			<script src="js/jquery-1.12.4.js"></script>
+			<script src="js/jquery-ui.js"></script>
 			<script type='text/javascript'>
 				document.querySelector('body').addEventListener('touchstart', function (ev) {
 					event.preventDefault();
 				});
-			</script>
+				
+				var jinzhi=0;
+				document.addEventListener("touchmove",function(e){
+					if(jinzhi==0){
+						e.preventDefault();
+						e.stopPropagation();
+					}
 
-			
-			<script src="js/jquery-1.12.4.js"></script>
-			<script src="js/jquery-ui.js"></script>
-			<script>
-				$( function() {
-					var handle = $( "#custom-handle" );
-					$( "#slider" ).slider({
-						create: function() {
-							handle.text( $( this ).slider( "value" ) );
-						},
-						slide: function( event, ui ) {
+					$( function() {
+						var handle = $( "#custom-handle" );
+						$( "#slider" ).slider({
+							create: function() {
+								handle.text( $( this ).slider( "value" ) );
+							},
+							slide: function( event, ui ) {
 
-							var count = ui.value
-							handle.text( count );
+								var count = ui.value
+								handle.text( count );
 
 
-							$("#totalCount").text(count);
+								$("#totalCount").text(count);
 
-							var nextProfit
+								var nextProfit
 
-							if (count >= 0 & count < 20) {
+								if (count >= 0 & count < 20) {
 
-								nextProfit = 400
-								$("#role").text("会员");
-								$("#rebate").text("12%");
-								$("#bonus").text("6.9%");
-								$("#totalProfit").text(nextProfit * count);
+									nextProfit = 400
+									$("#role").text("会员");
+									$("#rebate").text("12%");
+									$("#bonus").text("6.9%");
+									$("#totalProfit").text(nextProfit * count);
 
-							}else if (count < 63) {
+								}else if (count < 63) {
 
-								nextProfit = 600
-								$("#role").text("经理");
-								$("#rebate").text("18%");
-								$("#bonus").text("9.8%");
-								$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
+									nextProfit = 600
+									$("#role").text("经理");
+									$("#rebate").text("18%");
+									$("#bonus").text("9.8%");
+									$("#totalProfit").text(400 * 19 + nextProfit * (count-19));
 
-							}else {
+								}else {
 
-								nextProfit = 800
-								$("#role").text("总监");
-								$("#rebate").text("24%");
-								$("#bonus").text("12.7%");
-								$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
+									nextProfit = 800
+									$("#role").text("总监");
+									$("#rebate").text("24%");
+									$("#bonus").text("12.7%");
+									$("#totalProfit").text(400 * 19 + 600 * (62-19) + nextProfit * (count-62));
+								}
+
+								$("#nextProfit").text(nextProfit);
+
 							}
+						});
+					} );
+				</script>
 
-							$("#nextProfit").text(nextProfit);
-
-						}
-					});
-				} );
-			</script>
-
-			<!-- Placed at the end of the document so the pages load faster -->
-		</body>
-		</html>
+				<!-- Placed at the end of the document so the pages load faster -->
+			</body>
+			</html>
