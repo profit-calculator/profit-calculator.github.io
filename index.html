@@ -41,7 +41,6 @@
 
 
 <body>
-	<h2>您的下次直推可分润<span id="nextProfit">400</span>元</h2>
 	<h3>您的下级复购时您可获得佣金<span id="rebate">12%</span></h3>
 	<h3>您的分红百分比为<span id="bonus">6.9%</span></h3>
 	<br>
@@ -55,6 +54,9 @@
 
 		<h3 class="note">您已赚走纯利润<span id="totalProfit">0</span>元</h3>
 		<input type="text" id="totalProfitSlider" value=""/>
+
+		<h3 class="note">您的下次直推可分润<span id="nextProfit">400</span>元</h3>
+		<input type="text" id="nextProfitSlider" value=""/>
 
 	</div>
 
@@ -74,6 +76,8 @@
 
 			var levelSlider = $("#levelSlider").data("ionRangeSlider");
 			var totalProfitSlider = $("#totalProfitSlider").data("ionRangeSlider");
+			var nextProfitSlider = $("#nextProfitSlider").data("ionRangeSlider");
+
 
 
 			if (count >= 0 & count < 20) {
@@ -129,6 +133,10 @@
 			}
 
 			$("#nextProfit").text(nextProfit);
+
+			nextProfitSlider.update({
+				from: nextProfit
+			});
 		});
 
 		$("#totalCountSlider").ionRangeSlider({
@@ -151,6 +159,15 @@
 			grid: true,
 			min: 0,
 			max: 100000,
+			from: 0,
+			prefix: "$"
+		});
+
+		$("#nextProfitSlider").ionRangeSlider({
+			hide_min_max: true,
+			grid: true,
+			min: 0,
+			max: 1000,
 			from: 0,
 			prefix: "$"
 		});
